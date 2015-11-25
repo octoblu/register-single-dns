@@ -15,7 +15,7 @@ if [ -z "${DOMAIN}" ]; then
   exit 1
 fi
 
-HOSTED_ZONE=$(aws route53 list-hosted-zones-by-name --dns-name ${DOMAIN} | jq -r ".HostedZones[] | select(.Name==\"${DOMAIN}.\") .Id")
+HOSTED_ZONE=$(aws route53 list-hosted-zones | jq -r ".HostedZones[] | select(.Name==\"${DOMAIN}.\") .Id")
 
 if [ -z "${HOSTED_ZONE}" ]; then
   echo "Unable to find zone for ${DOMAIN}, exiting."
