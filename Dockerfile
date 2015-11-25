@@ -6,5 +6,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY run.sh run.sh
+COPY change.template change.template
 
 CMD ["./run.sh"]
