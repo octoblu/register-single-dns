@@ -22,5 +22,5 @@ if [ -z "${HOSTED_ZONE}" ]; then
   exit 1
 fi
 
-cat change.template | sed -e "s/%IP%/${IP}/g" | sed -e "s/%RECORD%/${RECORD}/g" > change.json
+cat change.template | sed -e "s/%IP%/${IP}/g" | sed -e "s/%RECORD%/${RECORD}/g"  | sed -e "s/%DOMAIN%/${DOMAIN}/g" > change.json
 aws route53 change-resource-record-sets --hosted-zone ${HOSTED_ZONE} --change-batch file://change.json
